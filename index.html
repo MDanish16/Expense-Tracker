@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="batman-moon">
+        <svg viewBox="0 0 80 80" width="80" height="80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="36" fill="#ffe600" stroke="#fff200" stroke-width="4"/>
+            <circle cx="55" cy="30" r="5" fill="#fff200" opacity="0.2"/>
+            <circle cx="30" cy="50" r="3" fill="#fff200" opacity="0.15"/>
+        </svg>
+    </div>
+    <div class="bat-signal-cone"></div>
+    <svg class="batman-bat bat1" viewBox="0 0 40 20" width="40" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 4C21 7 25 9 28 9C29 9 31 8.5 32 8C31.5 10 31 12 31 13C31 14 31.5 16 32 18C31 17.5 29 17 28 17C26 17 24 18 23 20C22.5 19 21.5 18 20 18C18.5 18 17.5 19 17 20C16 18 14 17 12 17C11 17 9 17.5 8 18C8.5 16 9 14 9 13C9 12 8.5 10 8 8C9 8.5 11 9 12 9C15 9 19 7 20 4Z" fill="#101014" stroke="#fff200" stroke-width="1"/>
+    </svg>
+    <svg class="batman-bat bat2" viewBox="0 0 32 16" width="32" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 3C16.7 5 20 7 23 7C24 7 25.5 6.5 26 6C25.5 7.5 25 9 25 10C25 11 25.5 13 26 15C25 14.5 23 14 22 14C20 14 18 15 17 16C16.5 15 15.5 14 14 14C13 14 11 14.5 10 15C10.5 13 11 11 11 10C11 9 10.5 7.5 10 6C10.5 6.5 12 7 13 7C16 7 19.3 5 16 3Z" fill="#101014" stroke="#fff200" stroke-width="1"/>
+    </svg>
+    <svg class="batman-bat bat3" viewBox="0 0 28 14" width="28" height="14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 2C14.5 4 17 6 19 6C19.7 6 21 5.5 21.5 5C21 6.5 20.5 8 20.5 9C20.5 10 21 12 21.5 13C20.5 12.5 19 12 18 12C16.5 12 15 13 14 14C13.5 13 12 12 10.5 12C9.5 12 8 12.5 7 13C7.5 12 8 10 8 9C8 8 7.5 6.5 7 5C7.5 5.5 8.8 6 9.5 6C11 6 13.5 4 14 2Z" fill="#101014" stroke="#fff200" stroke-width="1"/>
+    </svg>
+    <div id="welcome-overlay" class="welcome-overlay">
+        <div class="welcome-bg-animated"></div>
+        <div class="welcome-modal">
+            <svg class="batman-svg" viewBox="0 0 90 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M45 8C47.5 14 54 18 60 18C62 18 65 17 67 16C66 19 65 22 65 24C65 26 66 29 67 32C65 31 62 30 60 30C56 30 52 32 50 36C49 38 47 40 45 40C43 40 41 38 40 36C38 32 34 30 30 30C28 30 25 31 23 32C24 29 25 26 25 24C25 22 24 19 23 16C25 17 28 18 30 18C36 18 42.5 14 45 8Z" fill="#ffe600" stroke="#101014" stroke-width="2"/>
+            </svg>
+            <h2>Welcome to Expense Tracker!</h2>
+            <p>Track your income and expenses with style.<br>Click below to get started.</p>
+            <button id="close-welcome-btn">Start Tracking</button>
+        </div>
+    </div>
+    <div class="container">
+        <header>
+            <h1>Expense Tracker</h1>
+            <div id="balance-section">
+                <h2>Current Balance</h2>
+                <div id="balance">$0.00</div>
+            </div>
+        </header>
+        <main>
+            <section id="transaction-history-section">
+                <h3>Transaction History</h3>
+                <ul id="transaction-list"></ul>
+            </section>
+            <section id="add-transaction-section">
+                <h3>Add New Transaction</h3>
+                <form id="transaction-form">
+                    <div class="form-group">
+                        <input type="text" id="transaction-name" placeholder="Transaction Name" required autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="transaction-amount" placeholder="Amount" required min="0.01" step="0.01" autocomplete="off">
+                    </div>
+                    <div class="form-group type-group">
+                        <label><input type="radio" name="transaction-type" value="income" checked> Income</label>
+                        <label><input type="radio" name="transaction-type" value="expense"> Expense</label>
+                    </div>
+                    <button type="submit" id="add-transaction-btn">Add Transaction</button>
+                    <div id="form-warning" class="warning"></div>
+                </form>
+            </section>
+        </main>
+    </div>
+    <svg class="gotham-skyline" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <rect x="0" y="80" width="1440" height="40" fill="#101014"/>
+        <rect x="20" y="60" width="30" height="60" fill="#181a29"/>
+        <rect x="60" y="40" width="20" height="80" fill="#181a29"/>
+        <rect x="100" y="70" width="25" height="50" fill="#181a29"/>
+        <rect x="140" y="50" width="40" height="70" fill="#181a29"/>
+        <rect x="200" y="60" width="30" height="60" fill="#181a29"/>
+        <rect x="250" y="30" width="35" height="90" fill="#181a29"/>
+        <rect x="300" y="60" width="25" height="60" fill="#181a29"/>
+        <rect x="340" y="80" width="20" height="40" fill="#181a29"/>
+        <rect x="370" y="50" width="30" height="70" fill="#181a29"/>
+        <rect x="410" y="70" width="20" height="50" fill="#181a29"/>
+        <rect x="440" y="60" width="30" height="60" fill="#181a29"/>
+        <rect x="480" y="40" width="40" height="80" fill="#181a29"/>
+        <rect x="540" y="70" width="25" height="50" fill="#181a29"/>
+        <rect x="580" y="60" width="30" height="60" fill="#181a29"/>
+        <rect x="620" y="50" width="35" height="70" fill="#181a29"/>
+        <rect x="670" y="80" width="20" height="40" fill="#181a29"/>
+        <rect x="700" y="60" width="30" height="60" fill="#181a29"/>
+        <rect x="740" y="30" width="35" height="90" fill="#181a29"/>
+        <rect x="790" y="60" width="25" height="60" fill="#181a29"/>
+        <rect x="830" y="80" width="20" height="40" fill="#181a29"/>
+        <rect x="860" y="50" width="30" height="70" fill="#181a29"/>
+        <rect x="900" y="70" width="20" height="50" fill="#181a29"/>
+        <rect x="930" y="60" width="30" height="60" fill="#181a29"/>
+        <rect x="970" y="40" width="40" height="80" fill="#181a29"/>
+        <rect x="1030" y="70" width="25" height="50" fill="#181a29"/>
+        <rect x="1070" y="60" width="30" height="60" fill="#181a29"/>
+        <rect x="1110" y="50" width="35" height="70" fill="#181a29"/>
+        <rect x="1160" y="80" width="20" height="40" fill="#181a29"/>
+        <rect x="1190" y="60" width="30" height="60" fill="#181a29"/>
+        <rect x="1230" y="30" width="35" height="90" fill="#181a29"/>
+        <rect x="1280" y="60" width="25" height="60" fill="#181a29"/>
+        <rect x="1320" y="80" width="20" height="40" fill="#181a29"/>
+        <rect x="1350" y="50" width="30" height="70" fill="#181a29"/>
+        <!-- Windows -->
+        <rect x="30" y="90" width="5" height="10" fill="#ffe600"/>
+        <rect x="110" y="100" width="5" height="10" fill="#ffe600"/>
+        <rect x="150" y="80" width="5" height="10" fill="#ffe600"/>
+        <rect x="210" y="100" width="5" height="10" fill="#ffe600"/>
+        <rect x="260" y="60" width="5" height="10" fill="#ffe600"/>
+        <rect x="320" y="90" width="5" height="10" fill="#ffe600"/>
+        <rect x="380" y="100" width="5" height="10" fill="#ffe600"/>
+        <rect x="420" y="80" width="5" height="10" fill="#ffe600"/>
+        <rect x="490" y="100" width="5" height="10" fill="#ffe600"/>
+        <rect x="550" y="90" width="5" height="10" fill="#ffe600"/>
+        <rect x="610" y="100" width="5" height="10" fill="#ffe600"/>
+        <rect x="670" y="80" width="5" height="10" fill="#ffe600"/>
+        <rect x="730" y="100" width="5" height="10" fill="#ffe600"/>
+        <rect x="790" y="90" width="5" height="10" fill="#ffe600"/>
+        <rect x="850" y="100" width="5" height="10" fill="#ffe600"/>
+        <rect x="910" y="80" width="5" height="10" fill="#ffe600"/>
+        <rect x="970" y="100" width="5" height="10" fill="#ffe600"/>
+        <rect x="1030" y="90" width="5" height="10" fill="#ffe600"/>
+        <rect x="1090" y="100" width="5" height="10" fill="#ffe600"/>
+        <rect x="1150" y="80" width="5" height="10" fill="#ffe600"/>
+        <rect x="1210" y="100" width="5" height="10" fill="#ffe600"/>
+        <rect x="1270" y="90" width="5" height="10" fill="#ffe600"/>
+        <rect x="1330" y="100" width="5" height="10" fill="#ffe600"/>
+    </svg>
+    <script src="script.js"></script>
+</body>
+</html> 
